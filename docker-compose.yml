@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  activemq:
+    image: artemis-adoptopenjdk-11
+    ports:
+      - 8161:8161 # Web Server
+      - 9404:9404 # JMX Exporter
+      - 61616:61616 # Port for CORE,MQTT,AMQP,HORNETQ,STOMP,OPENWIRE
+      - 5445:5445 # Port for HORNETQ,STOMP
+      - 5672:5672 # Port for AMQP
+      - 1883:1883 # Port for MQTT
+      - 61613:61613 #Port for STOMP
+
+# TODO: marmer Volume for persistent queues and konfigurations
+
