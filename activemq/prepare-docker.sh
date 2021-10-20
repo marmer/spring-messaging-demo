@@ -123,14 +123,24 @@ if [ -n "${FROM_RELEASE}" ]; then
 
   cleanup
 
-  ARTEMIS_BASE_URL="$(curl --proxy $http_proxy -s https://www.apache.org/dyn/closer.cgi\?preferred=true)activemq/activemq-artemis/${ARTEMIS_VERSION}/"
+  if [ -n "${http_proxy}" ]; then
+    ARTEMIS_BASE_URL="$(curl --proxy $http_proxy -s https://www.apache.org/dyn/closer.cgi\?preferred=true)activemq/activemq-artemis/${ARTEMIS_VERSION}/"
+  else
+    ARTEMIS_BASE_URL="$(curl -s https://www.apache.org/dyn/closer.cgi\?preferred=true)activemq/activemq-artemis/${ARTEMIS_VERSION}/"
+  fi
+
   ARTEMIS_DIST_FILE_NAME="apache-artemis-${ARTEMIS_VERSION}-bin.tar.gz"
   CURL_OUTPUT="${BASE_TMPDIR}/${ARTEMIS_VERSION}/${ARTEMIS_DIST_FILE_NAME}"
 
   if [ -z "$(ls -A ${BASE_TMPDIR}/${ARTEMIS_VERSION})" ]
   then
     echo "Downloading ${ARTEMIS_DIST_FILE_NAME} from ${ARTEMIS_BASE_URL}..."
-    curl --proxy $http_proxy --progress-bar "${ARTEMIS_BASE_URL}${ARTEMIS_DIST_FILE_NAME}" --output "${CURL_OUTPUT}"
+
+      if [ -n "${http_proxy}" ]; then
+        curl --proxy $http_proxy --progress-bar "${ARTEMIS_BASE_URL}${ARTEMIS_DIST_FILE_NAME}" --output "${CURL_OUTPUT}"
+      else
+        curl --progress-bar "${ARTEMIS_BASE_URL}${ARTEMIS_DIST_FILE_NAME}" --output "${CURL_OUTPUT}"
+      fi
 
     echo "Expanding ${BASE_TMPDIR}/${ARTEMIS_VERSION}/${ARTEMIS_DIST_FILE_NAME}..."
     tar xzf "$CURL_OUTPUT" --directory "${BASE_TMPDIR}/${ARTEMIS_VERSION}" --strip 1

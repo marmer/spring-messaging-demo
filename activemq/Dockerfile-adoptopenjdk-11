@@ -23,16 +23,17 @@ LABEL maintainer="Apache ActiveMQ Team"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /opt
 
-ARG http_proxy_arg
+ARG http_proxy_arg=""
 
 ENV ARTEMIS_USER artemis
 ENV ARTEMIS_PASSWORD artemis
 ENV ANONYMOUS_LOGIN false
 ENV EXTRA_ARGS --http-host 0.0.0.0 --relax-jolokia
-ENV HTTP_PROXY=$http_proxy_arg
+ENV http_proxy=$http_proxy_arg
 
-RUN touch /etc/apt/apt.conf.d/proxy.conf
-RUN echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" > /etc/apt/apt.conf.d/proxy.conf
+RUN if [ -n "${http_proxy}" ]; then \
+   echo "Acquire::http::Proxy \"${http_proxy}\"\;" > /etc/apt/apt.conf.d/proxy.conf; \
+ fi
 
 # add user and group for artemis
 RUN groupadd -g 1000 -r artemis && useradd -r -u 1000 -g artemis artemis \
