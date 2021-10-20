@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  prepare-docker:
+    image: adoptopenjdk:11-jre-hotspot
+    entrypoint: /bin/bash
+    volumes:
+      - ./:/activemq
+#    stdin_open: true
+#    tty: true
+    command: ./prepare-docker.sh --from-release --artemis-version ${ACTIVEMQ_VERSION}
+    working_dir: /activemq
+    environment:
+      - http_proxy=${PROXY}
