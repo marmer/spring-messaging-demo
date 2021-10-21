@@ -62,14 +62,21 @@ EXPOSE 8161 \
 
 USER root
 
-RUN mkdir /var/lib/artemis-instance && chown -R artemis.artemis /var/lib/artemis-instance
+RUN mkdir -p /var/lib/artemis-instance/data
+RUN mkdir -p /var/lib/artemis-instance/etc
+RUN mkdir -p /var/lib/artemis-instance/bin
+RUN mkdir -p /var/lib/artemis-instance/log
+RUN chown -R artemis.artemis /var/lib/artemis-instance
 
 COPY ./docker/docker-run.sh /
 
 USER artemis
 
 # Expose some outstanding folders
-VOLUME ["/var/lib/artemis-instance"]
+VOLUME ["/var/lib/artemis-instance/data"]
+VOLUME ["/var/lib/artemis-instance/etc"]
+VOLUME ["/var/lib/artemis-instance/bin"]
+VOLUME ["/var/lib/artemis-instance/log"]
 WORKDIR /var/lib/artemis-instance
 
 ENTRYPOINT ["/docker-run.sh"]

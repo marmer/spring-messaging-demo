@@ -10,6 +10,13 @@ services:
       - 5672:5672 # Port for AMQP
       - 1883:1883 # Port for MQTT
       - 61613:61613 #Port for STOMP
-
-# TODO: marmer Volume for persistent queues and konfigurations
-
+    environment:
+      ARTEMIS_USER: us
+      ARTEMIS_PASSWORD: pw
+      ANONYMOUS_LOGIN: "false"
+      EXTRA_ARGS:
+    volumes:
+      - ./activemq-storage/data:/var/lib/artemis-instance/data
+      - ./activemq-storage/etc:/var/lib/artemis-instance/etc
+      - ./activemq-storage/bin:/var/lib/artemis-instance/bin
+      - ./activemq-storage/log:/var/lib/artemis-instance/log

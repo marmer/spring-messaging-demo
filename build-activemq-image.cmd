@@ -7,6 +7,7 @@ set PROXY=%1
 cd .\activemq
 echo Start download of ActiveMQ binaries
 docker-compose up
+docker-compose down
 echo Download of ActiveMQ binaries finished
 
 cd _TMP_\artemis\%ACTIVEMQ_VERSION%
