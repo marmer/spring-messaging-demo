@@ -14,7 +14,6 @@ services:
       ARTEMIS_USER: us
       ARTEMIS_PASSWORD: pw
       ANONYMOUS_LOGIN: "false"
-      EXTRA_ARGS:
     volumes:
       - ./activemq-storage/data:/var/lib/artemis-instance/data
       - ./activemq-storage/etc:/var/lib/artemis-instance/etc
