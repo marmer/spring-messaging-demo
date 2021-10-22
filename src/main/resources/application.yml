@@ -1,0 +1,12 @@
+spring:
+  artemis:
+    mode: native
+    broker-url: tcp://localhost:61616
+    user: us
+    password: pw
+  jms:
+    listener:
+      acknowledge-mode: auto
+      max-concurrency: 1
+      concurrency: 1
+      receive-timeout: 1s
