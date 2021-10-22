@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +39,8 @@ public class MyBean {
         faker.chuckNorris().fact(),
         Map.of("related_god", faker.ancient().god()));
 
+    JmsTemplate t;
+    t.exe
     System.out.println("Sent");
   }
 
@@ -71,12 +74,13 @@ public class MyBean {
     System.out.println("Received Headers: " + headers.get("related_god"));
   }
 
-//TODO marmer: sending objects as JSON
-//TODO marmer: Automated Integrationtests
-//TODO marmer: Dead Letter Queue and errorhandling
-//TODO marmer: Different Accounts for Different Applications (or api keys)
-//TODO marmer: Encryption
-//TODO marmer: Calling the Management Queue
+//TODO: marmer sending objects as JSON
+//TODO: marmer Automated Integrationtests
+//TODO: marmer Dead Letter Queue and errorhandling
+//TODO: marmer Different Accounts for Different Applications (or api keys)
+//TODO: marmer Encryption
+//TODO: marmer Calling the Management Queue
+//TODO: marmer  manual creation of queues and topics
 
 //TODO marmer: https://activemq.apache.org/components/artemis/documentation/2.0.0/pre-acknowledge.html
 }
