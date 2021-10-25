@@ -16,4 +16,11 @@ public class ChuckNorrisCiteJMSListener {
     System.out.println("Automatically received headers: " + eyeWittness);
   }
 
+  @JmsListener(destination = "ChuckNorrisFactForAutomatedErrorListener")
+  public void processMessageWithError(final ChuckNorrisFactsHolder content,
+      //use @Headers for all headers
+      @Header("related_witness") final String eyeWittness) {
+    throw new RuntimeException("Something really 'unexpected' happend");
+  }
+
 }

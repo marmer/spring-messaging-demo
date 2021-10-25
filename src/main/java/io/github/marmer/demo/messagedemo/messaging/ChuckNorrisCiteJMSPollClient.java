@@ -24,6 +24,7 @@ public class ChuckNorrisCiteJMSPollClient {
         "ChuckNorrisFactForManualListener",
         ChuckNorrisFactsHolder.class);
 
-    System.out.println("manually polled Message: " + message);
+    System.out.println(
+        "manually polled Message: " + message); //The message goes "right" to the Dead Letter Queue
   }
 }

@@ -41,7 +41,4 @@ public class Application {
 //    e.g. bestaetigungen.testbericht.v1.TestberichtFuerBestaetigungVorgemerktEvent
     return converter;
   }
-
-  // TODO: marmer 25.10.2021 Errorhandling
-  
 }
