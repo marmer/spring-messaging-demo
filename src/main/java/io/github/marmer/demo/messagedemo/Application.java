@@ -36,6 +36,9 @@ public class Application {
     converter.setTargetType(MessageType.TEXT);
     converter.setTypeIdPropertyName(
         "_type"); //Header name used to store the qualified typename of the type for deserialization
+
+//    Suggested Convention for type names in DDD environment: <domain>.<aggregate>.<version>.<Eventname>Event
+//    e.g. bestaetigungen.testbericht.v1.TestberichtFuerBestaetigungVorgemerktEvent
     return converter;
   }
 }
