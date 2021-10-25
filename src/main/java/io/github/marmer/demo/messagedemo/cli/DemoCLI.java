@@ -25,12 +25,12 @@ public class DemoCLI {
   }
 
   @ShellMethod("Polls and prints one Fact with Headers")
-  public void pollOneWithHeader() {
+  public void pollWithHeader() {
     chuckNorrisCiteJMSPollClient.pollFactAndConvertWithHeaders();
   }
 
   @ShellMethod("Polls and prints one Fact without Headers")
-  public void pollOneWithoutHeader() {
+  public void pollWithoutHeader() {
     chuckNorrisCiteJMSPollClient.pollFactAndConvertWithoutHeaders();
   }
 

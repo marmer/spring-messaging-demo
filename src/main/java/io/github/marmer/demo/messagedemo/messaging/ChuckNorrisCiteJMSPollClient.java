@@ -1,7 +1,6 @@
 package io.github.marmer.demo.messagedemo.messaging;
 
 import io.github.marmer.demo.messagedemo.ChuckNorrisFactsHolder;
-import org.apache.activemq.artemis.jms.client.ActiveMQDestination;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +20,8 @@ public class ChuckNorrisCiteJMSPollClient {
   }
 
   public void pollFactAndConvertWithoutHeaders() {
-    final var message = jmsTemplate.convertSendAndReceive(
-        ActiveMQDestination.createQueue("ChuckNorrisFactForManualListener"),
+    final var message = jmsTemplate.receiveAndConvert(
+        "ChuckNorrisFactForManualListener",
         ChuckNorrisFactsHolder.class);
 
     System.out.println("manually polled Message: " + message);
