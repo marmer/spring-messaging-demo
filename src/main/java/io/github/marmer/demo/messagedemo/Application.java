@@ -20,7 +20,7 @@ public class Application {
     SpringApplication.run(Application.class, args);
   }
 
-  // Only required due to defining myFactory in the receiver
+  // Only required due to defining myFactory in  receiver
   @Bean
   public JmsListenerContainerFactory<?> myFactory(
       final ConnectionFactory connectionFactory,
