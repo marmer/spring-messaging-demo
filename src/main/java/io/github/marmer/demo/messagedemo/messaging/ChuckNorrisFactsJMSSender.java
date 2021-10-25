@@ -28,8 +28,7 @@ public class ChuckNorrisFactsJMSSender {
         chuckNorrisFact,
         Map.of("related_witness", chuckNorrisFact.getEyeWittness()));
 
-    // TODO: marmer 25.10.2021 implement the related Listener
-    jmsTemplate.convertAndSend("ChuckNorrisFactForManualErrorListener",
+    jmsTemplate.convertAndSend("ChuckNorrisFactForAutomatedError2Listener",
         chuckNorrisFact,
         Map.of("related_witness", chuckNorrisFact.getEyeWittness()));
   }

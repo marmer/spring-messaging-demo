@@ -23,4 +23,17 @@ public class ChuckNorrisCiteJMSListener {
     throw new RuntimeException("Something really 'unexpected' happend");
   }
 
+  @JmsListener(destination = "ChuckNorrisFactForAutomatedError2Listener")
+  public void processMessageWithError2(final ChuckNorrisFactsHolder content,
+      //use @Headers for all headers
+      @Header("related_witness") final String eyeWittness) {
+    throw new RuntimeException("Something really 'unexpected' happend");
+  }
+
+  @JmsListener(destination = "DLQ", selector = "_AMQ_ORIG_ADDRESS = 'ChuckNorrisFactForAutomatedError2Listener'")
+  public void processDeadLetterContent(final ChuckNorrisFactsHolder content,
+      //use @Headers for all headers
+      @Header("related_witness") final String eyeWittness) {
+    System.out.println("Read Message from Dead Letter Queue: " + content);
+  }
 }
