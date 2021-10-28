@@ -67,6 +67,7 @@ RUN mkdir -p /var/lib/artemis-instance/etc
 RUN mkdir -p /var/lib/artemis-instance/bin
 RUN mkdir -p /var/lib/artemis-instance/log
 RUN chown -R artemis.artemis /var/lib/artemis-instance
+RUN chmod a+x /docker-run.sh
 
 COPY ./docker/docker-run.sh /
 
