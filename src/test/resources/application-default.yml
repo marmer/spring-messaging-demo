@@ -1,0 +1,6 @@
+spring:
+  shell:
+    script:
+      enabled: false
+    interactive:
+      enabled: false
