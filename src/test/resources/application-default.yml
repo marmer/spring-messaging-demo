@@ -4,8 +4,3 @@ spring:
       enabled: false
     interactive:
       enabled: false
-  jms:
-    template:
-      delivery-mode: non_persistent
-    listener:
-      auto-startup: false
