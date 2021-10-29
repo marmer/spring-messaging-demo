@@ -24,7 +24,7 @@ public class ChuckNorrisFactsJMSSender {
         chuckNorrisFact,
         Map.of("related_witness", chuckNorrisFact.getEyeWittness()));
 
-    rabbitTemplate.convertAndSend("myQueue2",
+    rabbitTemplate.convertAndSend("myQueueFromDefinitions",
         chuckNorrisFact,
         Map.of("related_witness", chuckNorrisFact.getEyeWittness()));
 //

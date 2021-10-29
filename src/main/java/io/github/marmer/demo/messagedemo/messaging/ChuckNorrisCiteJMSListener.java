@@ -12,9 +12,13 @@ public class ChuckNorrisCiteJMSListener {
     System.out.println("Message read from myQueue : " + in);
   }
 
-  @RabbitListener(queues = "myQueue2")
-  public void listenMyQueue2(final ChuckNorrisFactsHolder in) {
-    System.out.println("Message read from myQueue2 : " + in);
+
+  // TODO: marmer 29.10.2021 try with other user
+  // TODO: marmer 29.10.2021 try with dead letter
+  // TODO: marmer 29.10.2021 try to block the usage of undefined queues (maybe by user rights)
+  @RabbitListener(queues = "myQueueFromDefinitions")
+  public void listenMyQueueFromDefinitions(final ChuckNorrisFactsHolder in) {
+    System.out.println("Message read from myQueueFromDefinitions : " + in);
   }
 
   //  @JmsListener(destination = "ChuckNorrisFactForAutomaticListener")
