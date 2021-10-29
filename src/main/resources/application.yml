@@ -1,17 +1,14 @@
 spring:
-  artemis:
-    mode: native
-    # Here you can find some more uri parameters: org.apache.activemq.artemis.api.config.ActiveMQDefaultConfiguration
-    # Alternatively you can supply an org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory as Spring bean for a manual configuration
-    broker-url: tcp://localhost:61616?retryInterval=1000&retryIntervalMultiplier=1.5&reconnectAttempts=1000
-    user: us
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: us
     password: pw
-  jms:
     listener:
-      acknowledge-mode: auto
-      max-concurrency: 1
-      concurrency: 1
-      receive-timeout: 1s
-      auto-startup: true
-    template:
-      delivery-mode: persistent
+      simple:
+        retry:
+          enabled: true
+      direct:
+        retry:
+          enabled: true
+

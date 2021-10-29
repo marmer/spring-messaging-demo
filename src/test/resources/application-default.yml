@@ -4,6 +4,3 @@ spring:
       enabled: false
     interactive:
       enabled: false
-  jms:
-    listener:
-      auto-startup: false
