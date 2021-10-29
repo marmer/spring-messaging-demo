@@ -21,10 +21,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-@SpringBootTest(/*properties = {
-    InteractiveShellApplicationRunner.SPRING_SHELL_INTERACTIVE_ENABLED + "=false",
-    ScriptShellApplicationRunner.SPRING_SHELL_SCRIPT + ".enabled=false"
-}*/)
+@SpringBootTest
 @Testcontainers
 class ApplicationTest {
 
