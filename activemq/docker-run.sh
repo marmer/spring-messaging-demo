@@ -40,6 +40,7 @@ echo CREATE_ARGUMENTS=${CREATE_ARGUMENTS}
 
 if ! [ -f ./etc/broker.xml ]; then
     /opt/activemq-artemis/bin/artemis create ${CREATE_ARGUMENTS} .
+    cp -f /opt/activemq-artemis/docker/initial_broker.xml /var/lib/artemis-instance/etc/broker.xml
 else
     echo "broker already created, ignoring creation"
 fi

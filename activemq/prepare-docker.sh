@@ -186,6 +186,7 @@ fi
 
 cp ./Dockerfile-* "$ARTEMIS_DIST/docker"
 cp ./docker-run.sh "$ARTEMIS_DIST/docker"
+cp ./initial_broker.xml "$ARTEMIS_DIST/docker"
 
 echo "Docker file support files at : $ARTEMIS_DIST/docker"
 ls "$ARTEMIS_DIST/docker"
