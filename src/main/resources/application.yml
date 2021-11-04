@@ -11,4 +11,6 @@ spring:
       direct:
         retry:
           enabled: true
+    template:
+      exchange: ChuckNorrisFactsExchange
 

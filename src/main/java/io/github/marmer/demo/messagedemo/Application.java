@@ -1,6 +1,5 @@
 package io.github.marmer.demo.messagedemo;
 
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.SpringApplication;
@@ -14,10 +13,7 @@ public class Application {
     SpringApplication.run(Application.class, args);
   }
 
-  @Bean
-  public Queue myQueue() {
-    return new Queue("myQueue", true);
-  }
+  // TODO: marmer 04.11.2021 Seperate User for Messages to avoid automatic creation of Queues and Exchanges (or find some "switch" to turn it off)
 
   @Bean
   public MessageConverter jsonMessageConverter() {

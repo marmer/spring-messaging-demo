@@ -1,15 +1,105 @@
 {
+  "rabbit_version": "3.9.8",
+  "rabbitmq_version": "3.9.8",
+  "product_name": "RabbitMQ",
+  "product_version": "3.9.8",
+  "users": [
+    {
+      "name": "us",
+      "password_hash": "IB3pboVFGg18XF53pFrP6fNbbbtsN2aiwYX+YjQKsqYhhWsw",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": [
+        "administrator"
+      ],
+      "limits": {}
+    }
+  ],
   "vhosts": [
     {
       "name": "/"
     }
   ],
+  "permissions": [
+    {
+      "user": "us",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "topic_permissions": [],
+  "parameters": [],
+  "global_parameters": [
+    {
+      "name": "internal_cluster_id",
+      "value": "rabbitmq-cluster-id-mICKqWWmP7FXLuaQjZFGMA"
+    }
+  ],
+  "policies": [],
   "queues": [
     {
-      "name": "myQueueFromDefinitions",
+      "name": "ChuckNorrisFactsQueue2",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "ChuckNorrisFactsQueueAll",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "ChuckNorrisFactsQueue1",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "ChuckNorrisFactsQueueAll",
+      "destination_type": "queue",
+      "routing_key": "ChuckNorrisFactsQueue.*",
+      "arguments": {}
+    },
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "ChuckNorrisFactsQueue1",
+      "destination_type": "queue",
+      "routing_key": "ChuckNorrisFactsQueue.1",
+      "arguments": {}
+    },
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "ChuckNorrisFactsQueue2",
+      "destination_type": "queue",
+      "routing_key": "ChuckNorrisFactsQueue.2",
       "arguments": {}
     }
   ]
