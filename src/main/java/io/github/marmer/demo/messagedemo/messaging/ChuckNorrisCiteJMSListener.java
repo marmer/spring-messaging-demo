@@ -20,5 +20,6 @@ public class ChuckNorrisCiteJMSListener {
       @Header("related_witness") final String relatedWittness) {
     System.out.println("Message read from ChuckNorrisFactsQueue2 : " + in);
     System.out.println("Message read from ChuckNorrisFactsQueue2 wittness: " + relatedWittness);
+    throw new RuntimeException("Something went wrong");
   }
 }

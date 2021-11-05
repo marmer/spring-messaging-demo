@@ -44,6 +44,19 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.2",
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "DLQ.ChuckNorrisFactsQueue2",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.2",
         "x-queue-type": "classic"
       }
     },
@@ -53,6 +66,19 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.ALL",
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "DLQ.ChuckNorrisFactsQueueALL",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.ALL",
         "x-queue-type": "classic"
       }
     },
@@ -62,6 +88,19 @@
       "durable": true,
       "auto_delete": false,
       "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.1",
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "DLQ.ChuckNorrisFactsQueue1",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "ChuckNorrisFactsExchange",
+        "x-dead-letter-routing-key": "DLQ.ChuckNorrisFactsRoute.1",
         "x-queue-type": "classic"
       }
     }
@@ -72,7 +111,7 @@
       "vhost": "/",
       "type": "topic",
       "durable": true,
-      "auto_delete": true,
+      "auto_delete": false,
       "internal": false,
       "arguments": {}
     }
@@ -89,9 +128,9 @@
     {
       "source": "ChuckNorrisFactsExchange",
       "vhost": "/",
-      "destination": "ChuckNorrisFactsQueue1",
+      "destination": "DLQ.ChuckNorrisFactsQueueALL",
       "destination_type": "queue",
-      "routing_key": "ChuckNorrisFactsRoute.1",
+      "routing_key": "DLQ.ChuckNorrisFactsRoute.ALL",
       "arguments": {}
     },
     {
@@ -100,6 +139,30 @@
       "destination": "ChuckNorrisFactsQueue2",
       "destination_type": "queue",
       "routing_key": "ChuckNorrisFactsRoute.2",
+      "arguments": {}
+    },
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "DLQ.ChuckNorrisFactsQueue2",
+      "destination_type": "queue",
+      "routing_key": "DLQ.ChuckNorrisFactsRoute.2",
+      "arguments": {}
+    },
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "ChuckNorrisFactsQueue1",
+      "destination_type": "queue",
+      "routing_key": "ChuckNorrisFactsRoute.1",
+      "arguments": {}
+    },
+    {
+      "source": "ChuckNorrisFactsExchange",
+      "vhost": "/",
+      "destination": "DLQ.ChuckNorrisFactsQueue1",
+      "destination_type": "queue",
+      "routing_key": "DLQ.ChuckNorrisFactsRoute.1",
       "arguments": {}
     }
   ]

@@ -19,5 +19,9 @@ public class ChuckNorrisFactsJMSSender {
       message.getMessageProperties().setHeader("related_witness", chuckNorrisFact.getEyeWittness());
       return message;
     });
+    rabbitTemplate.convertAndSend("ChuckNorrisFactsRoute.2", chuckNorrisFact, message -> {
+      message.getMessageProperties().setHeader("related_witness", chuckNorrisFact.getEyeWittness());
+      return message;
+    });
   }
 }
