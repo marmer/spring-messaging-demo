@@ -15,7 +15,7 @@ public class ChuckNorrisFactsJMSSender {
   }
 
   public void sendChuckNorrisFact(final ChuckNorrisFactsHolder chuckNorrisFact) {
-    rabbitTemplate.convertAndSend(chuckNorrisFact, message -> {
+    rabbitTemplate.convertAndSend("ChuckNorrisFactsRoute.1", chuckNorrisFact, message -> {
       message.getMessageProperties().setHeader("related_witness", chuckNorrisFact.getEyeWittness());
       return message;
     });

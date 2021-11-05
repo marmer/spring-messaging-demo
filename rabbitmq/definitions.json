@@ -70,9 +70,9 @@
     {
       "name": "ChuckNorrisFactsExchange",
       "vhost": "/",
-      "type": "fanout",
+      "type": "topic",
       "durable": true,
-      "auto_delete": false,
+      "auto_delete": true,
       "internal": false,
       "arguments": {}
     }
@@ -83,7 +83,7 @@
       "vhost": "/",
       "destination": "ChuckNorrisFactsQueueAll",
       "destination_type": "queue",
-      "routing_key": "ChuckNorrisFactsQueue.*",
+      "routing_key": "ChuckNorrisFactsRoute.*",
       "arguments": {}
     },
     {
@@ -91,7 +91,7 @@
       "vhost": "/",
       "destination": "ChuckNorrisFactsQueue1",
       "destination_type": "queue",
-      "routing_key": "ChuckNorrisFactsQueue.1",
+      "routing_key": "ChuckNorrisFactsRoute.1",
       "arguments": {}
     },
     {
@@ -99,7 +99,7 @@
       "vhost": "/",
       "destination": "ChuckNorrisFactsQueue2",
       "destination_type": "queue",
-      "routing_key": "ChuckNorrisFactsQueue.2",
+      "routing_key": "ChuckNorrisFactsRoute.2",
       "arguments": {}
     }
   ]
