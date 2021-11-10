@@ -5,6 +5,7 @@ import io.github.marmer.demo.messagedemo.ChuckNorrisFactsHolder;
 import io.github.marmer.demo.messagedemo.messaging.ChuckNorrisFactsJMSSender;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.commands.Quit;
 
 @ShellComponent
 public class DemoCLI {
@@ -27,9 +28,13 @@ public class DemoCLI {
             chuckNorrisFactSource.getEyeWittness()));
   }
 
-  @ShellMethod(value = "kills the application")
-  public void kill() {
-    System.exit(0);
+  @ShellComponent
+  public static class QuitComand implements Quit.Command {
+
+    @ShellMethod(value = "kills the application")
+    public void exit() {
+      System.exit(0);
+    }
   }
 
 
