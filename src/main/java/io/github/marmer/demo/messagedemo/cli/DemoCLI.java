@@ -8,7 +8,7 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.commands.Quit;
 
 @ShellComponent
-public class DemoCLI {
+public class DemoCLI implements Quit.Command {
 
   private final ChuckNorrisFactsJMSSender chuckNorrisFactsJMSSender;
   private final ChuckNorrisFactSource chuckNorrisFactSource;
@@ -28,13 +28,9 @@ public class DemoCLI {
             chuckNorrisFactSource.getEyeWittness()));
   }
 
-  @ShellComponent
-  public static class QuitComand implements Quit.Command {
-
-    @ShellMethod(value = "kills the application")
-    public void exit() {
-      System.exit(0);
-    }
+  @ShellMethod(value = "kills the application")
+  public void exit() {
+    System.exit(0);
   }
 
 
